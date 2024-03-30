@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -16,6 +19,11 @@ func main() {
 
 	r.Handle("/", fileServer)
 
-	log.Println("starting server on addr", ":3000")
-	http.ListenAndServe(":3000", r)
+	port, err := strconv.Atoi(os.Getenv("PORT"))
+	if err != nil {
+		log.Fatal(err)
+	}
+	addr := fmt.Sprintf(":%d", port)
+	log.Println("starting server on addr", addr)
+	http.ListenAndServe(addr, r)
 }

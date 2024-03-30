@@ -1,5 +1,7 @@
 FROM golang:latest
 
+ENV PORT 3000
+
 WORKDIR /app
 
 ADD . /app/
@@ -7,6 +9,6 @@ ADD . /app/
 RUN go mod tidy
 RUN go mod verify
 
-EXPOSE 3000
+EXPOSE $PORT
 
 CMD ["go","run", "main.go"]

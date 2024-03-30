@@ -2,4 +2,4 @@ version: 3
 
 tasks:
   image-build: docker build  -t godemo .
-  container-run: docker run -p 3000:3000  -it godemo
+  container-run: docker run -p 4000:3000 --env-file envlist.txt   -it godemo
