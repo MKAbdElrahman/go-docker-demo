@@ -1,5 +1,5 @@
 version: 3
 
 tasks:
-  image-build: docker build  -t godemo .
+  image-build: docker build  -t mkcodedev/godemo:latest . 
   container-run: docker run -p 4000:3000 --env-file envlist.txt   -it godemo
